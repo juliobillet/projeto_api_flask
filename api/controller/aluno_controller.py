@@ -27,6 +27,16 @@ class AlunoController(Resource):
             retorno_json = schema_aluno.jsonify(retorno)
             return make_response(retorno_json, 201)
 
+
+class AlunoDetailController(Resource):
+    def get(self, aluno_id):
+        aluno = aluno_service.listar_alunos_por_id(aluno_id)
+        if aluno is None:
+            return make_response(jsonify("Aluno não encontrado!"), 404)
+
+        validate = aluno_schema.AlunoSchema()
+        return make_response(validate.jsonify(aluno), 200)
+
     def put(self, aluno_id):
         aluno = aluno_service.listar_alunos_por_id(aluno_id)
         if aluno is None:
@@ -54,17 +64,7 @@ class AlunoController(Resource):
         return make_response(jsonify("Aluno excluído com sucesso!"), 204)
 
 
-class AlunoDetailController(Resource):
-    def get(self, aluno_id):
-        aluno = aluno_service.listar_alunos_por_id(aluno_id)
-        if aluno is None:
-            return make_response(jsonify("Aluno não encontrado!"), 404)
-
-        validate = aluno_schema.AlunoSchema()
-        return make_response(validate.jsonify(aluno), 200)
-
-
+# Listar e cadastrar alunos
 api.add_resource(AlunoController, "/aluno")
-api.add_resource(AlunoController, "/aluno/<int:aluno_id>", endpoint="alterar_aluno", methods=["PUT"])
-api.add_resource(AlunoController, "/aluno/<int:aluno_id>", endpoint="excluir_aluno", methods=["DELETE"])
+# Detalhes, atualizar e excluir um aluno específico
 api.add_resource(AlunoDetailController, "/aluno/<int:aluno_id>")

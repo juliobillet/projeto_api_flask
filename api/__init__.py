@@ -16,3 +16,5 @@ from .controller import aluno_controller
 from .models import aluno_model
 from .controller import professor_controller
 from .models import professor_model
+from .controller import turma_controller
+from .models import turma_model
