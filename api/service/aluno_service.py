@@ -3,19 +3,19 @@ from api import db
 
 
 def cadastrar_aluno(aluno):
-    aluno_bd = aluno_model.Aluno(nome=aluno.nome, data_nascimento=aluno.data_nascimento)
+    aluno_bd = aluno_model.AlunoModel(nome=aluno.nome, data_nascimento=aluno.data_nascimento)
     db.session.add(aluno_bd)
     db.session.commit()
     return aluno_bd
 
 
 def listar_alunos():
-    alunos = aluno_model.Aluno.query.all()
+    alunos = aluno_model.AlunoModel.query.all()
     return alunos
 
 
-def listar_alunos_por_id(parm_id):
-    aluno = aluno_model.Aluno.query.filter_by(id=parm_id).first()
+def listar_alunos_por_id(param_id):
+    aluno = aluno_model.AlunoModel.query.filter_by(id=param_id).first()
     return aluno
 
 

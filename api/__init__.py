@@ -12,9 +12,5 @@ ma.init_app(app)
 
 api = Api(app)
 
-from .controller import aluno_controller
-from .models import aluno_model
-from .controller import professor_controller
-from .models import professor_model
-from .controller import turma_controller
-from .models import turma_model
+from .controller import aluno_controller, professor_controller, turma_controller, disciplina_controller
+from .models import aluno_model, professor_model, turma_model, disciplina_model
