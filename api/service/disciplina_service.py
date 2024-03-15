@@ -14,7 +14,7 @@ def listar_disciplinas():
     return disciplinas
 
 
-def listar_disciplinas_por_id(param_id):
+def listar_disciplina_por_id(param_id):
     disciplina = disciplina_model.DisciplinaModel.query.filter_by(id=param_id).first()
     return disciplina
 

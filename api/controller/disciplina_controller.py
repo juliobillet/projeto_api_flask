@@ -28,7 +28,7 @@ class DisciplinaController(Resource):
 
 class DisciplinaDetailController(Resource):
     def get(self, disciplina_id):
-        disciplina = disciplina_service.listar_disciplinas_por_id(disciplina_id)
+        disciplina = disciplina_service.listar_disciplina_por_id(disciplina_id)
         if disciplina is None:
             return make_response(jsonify("Disciplina não encontrada!"), 404)
 
@@ -36,7 +36,7 @@ class DisciplinaDetailController(Resource):
         return make_response(validate.jsonify(disciplina), 200)
 
     def put(self, disciplina_id):
-        disciplina = disciplina_service.listar_disciplinas_por_id(disciplina_id)
+        disciplina = disciplina_service.listar_disciplina_por_id(disciplina_id)
         if disciplina is None:
             return make_response(jsonify("Disciplina não encontrada!"), 404)
         schema_disciplina = disciplina_schema.DisciplinaSchema()
@@ -48,11 +48,11 @@ class DisciplinaDetailController(Resource):
 
             disciplina_atualizada = disciplina_dto.DisciplinaDTO(nome=nome)
             disciplina_service.atualizar_disciplina(disciplina, disciplina_atualizada)
-            retorno_disciplina_atualizada = disciplina_service.listar_disciplinas_por_id(disciplina_id)
+            retorno_disciplina_atualizada = disciplina_service.listar_disciplina_por_id(disciplina_id)
             return make_response(schema_disciplina.jsonify(retorno_disciplina_atualizada), 200)
 
     def delete(self, disciplina_id):
-        disciplina_bd = disciplina_service.listar_disciplinas_por_id(disciplina_id)
+        disciplina_bd = disciplina_service.listar_disciplina_por_id(disciplina_id)
         if disciplina_bd is None:
             return make_response(jsonify("Disciplina não encontrada!"), 404)
         disciplina_service.excluir_disciplina(disciplina_bd)

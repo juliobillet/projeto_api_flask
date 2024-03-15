@@ -1,6 +1,5 @@
 from api import ma
 from ..models import disciplina_model
-from ..dto import disciplina_dto
 from marshmallow import fields
 
 

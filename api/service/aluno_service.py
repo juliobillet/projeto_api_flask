@@ -14,7 +14,7 @@ def listar_alunos():
     return alunos
 
 
-def listar_alunos_por_id(param_id):
+def listar_aluno_por_id(param_id):
     aluno = aluno_model.AlunoModel.query.filter_by(id=param_id).first()
     return aluno
 

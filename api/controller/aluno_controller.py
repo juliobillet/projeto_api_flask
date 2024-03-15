@@ -30,7 +30,7 @@ class AlunoController(Resource):
 
 class AlunoDetailController(Resource):
     def get(self, aluno_id):
-        aluno = aluno_service.listar_alunos_por_id(aluno_id)
+        aluno = aluno_service.listar_aluno_por_id(aluno_id)
         if aluno is None:
             return make_response(jsonify("Aluno não encontrado!"), 404)
 
@@ -38,7 +38,7 @@ class AlunoDetailController(Resource):
         return make_response(validate.jsonify(aluno), 200)
 
     def put(self, aluno_id):
-        aluno = aluno_service.listar_alunos_por_id(aluno_id)
+        aluno = aluno_service.listar_aluno_por_id(aluno_id)
         if aluno is None:
             return make_response(jsonify("Aluno não encontrado!"), 404)
 
@@ -52,11 +52,11 @@ class AlunoDetailController(Resource):
 
             novos_dados_aluno = aluno_dto.AlunoDTO(nome=nome, data_nascimento=data_nascimento)
             aluno_service.atualizar_aluno(aluno, novos_dados_aluno)
-            aluno_atualizado = aluno_service.listar_alunos_por_id(aluno_id)
+            aluno_atualizado = aluno_service.listar_aluno_por_id(aluno_id)
             return make_response(schema_aluno.jsonify(aluno_atualizado), 200)
 
     def delete(self, aluno_id):
-        aluno_bd = aluno_service.listar_alunos_por_id(aluno_id)
+        aluno_bd = aluno_service.listar_aluno_por_id(aluno_id)
         if aluno_bd is None:
             return make_response(jsonify("Aluno não encontrado!"), 404)
 
