@@ -20,10 +20,12 @@ class CursoController(Resource):
         else:
             nome = request.json["nome"]
             descricao = request.json["descricao"]
+            disciplinas = request.json["disciplinas"]
 
             novo_curso = curso_dto.CursoDTO(
                 nome=nome,
-                descricao=descricao
+                descricao=descricao,
+                disciplinas=disciplinas
             )
             retorno = curso_service.cadastrar_curso(novo_curso)
             curso_json = schema_curso.jsonify(retorno)
@@ -50,10 +52,12 @@ class CursoDetailController(Resource):
         else:
             nome = request.json["nome"]
             descricao = request.json["descricao"]
+            disciplinas = request.json["disciplinas"]
 
             curso_atualizado = curso_dto.CursoDTO(
                 nome=nome,
-                descricao=descricao
+                descricao=descricao,
+                disciplinas=disciplinas
             )
             curso_service.atualizar_curso(curso, curso_atualizado)
             retorno_curso_atualizado = curso_service.listar_curso_por_id(curso_id)
