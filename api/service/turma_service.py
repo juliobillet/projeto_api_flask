@@ -7,7 +7,8 @@ def cadastrar_turma(turma):
         nome=turma.nome,
         descricao=turma.descricao,
         data_inicio=turma.data_inicio,
-        data_fim=turma.data_fim
+        data_fim=turma.data_fim,
+        curso_id=turma.curso_id
     )
     db.session.add(turma_bd)
     db.session.commit()
@@ -29,6 +30,7 @@ def atualizar_turma(turma_bd, turma_atualizada):
     turma_bd.descricao = turma_atualizada.descricao
     turma_bd.data_inicio = turma_atualizada.data_inicio
     turma_bd.data_fim = turma_atualizada.data_fim
+    turma_bd.curso_id = turma_atualizada.curso_id
     db.session.commit()
 
 
